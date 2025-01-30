@@ -739,7 +739,7 @@ void M_QuickSave(void)
     }
     DEH_snprintf(tempstring, sizeof(tempstring),
                  QSPROMPT, savegamestrings[quickSaveSlot]);
-    M_StartMessage(tempstring, M_QuickSaveResponse, true);
+    M_StartMessage(tempstring, (void *)M_QuickSaveResponse, true);
 }
 
 
@@ -772,7 +772,7 @@ void M_QuickLoad(void)
     }
     DEH_snprintf(tempstring, sizeof(tempstring),
                  QLPROMPT, savegamestrings[quickSaveSlot]);
-    M_StartMessage(tempstring, M_QuickLoadResponse, true);
+    M_StartMessage(tempstring, (void *)M_QuickLoadResponse, true);
 }
 
 
@@ -929,7 +929,7 @@ void M_ChooseSkill(int choice)
 {
     if (choice == nightmare)
     {
-	M_StartMessage(DEH_String(NIGHTMARE),M_VerifyNightmare,true);
+	M_StartMessage(DEH_String(NIGHTMARE),(void *)M_VerifyNightmare,true);
 	return;
     }
 	
@@ -1032,7 +1032,7 @@ void M_EndGame(int choice)
 	return;
     }
 	
-    M_StartMessage(DEH_String(ENDGAME),M_EndGameResponse,true);
+    M_StartMessage(DEH_String(ENDGAME),(void *)M_EndGameResponse,true);
 }
 
 
@@ -1133,7 +1133,7 @@ void M_QuitDOOM(int choice)
     DEH_snprintf(endstring, sizeof(endstring), "%s\n\n" DOSY,
                  DEH_String(M_SelectEndMessage()));
 
-    M_StartMessage(endstring,M_QuitResponse,true);
+    M_StartMessage(endstring,(void *)M_QuitResponse,true);
 }
 
 
@@ -1237,7 +1237,7 @@ M_StartMessage
     messageLastMenuActive = menuactive;
     messageToPrint = 1;
     messageString = string;
-    messageRoutine = routine;
+    messageRoutine = (void (*)(int))routine;
     messageNeedsInput = input;
     menuactive = true;
     return;

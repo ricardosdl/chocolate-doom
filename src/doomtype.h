@@ -31,21 +31,21 @@
 // Outside Windows, we use strings.h for str[n]casecmp.
 
 
-#if !HAVE_DECL_STRCASECMP || !HAVE_DECL_STRNCASECMP
+//#if !HAVE_DECL_STRCASECMP || !HAVE_DECL_STRNCASECMP
 
-#include <string.h>
-#if !HAVE_DECL_STRCASECMP
-#define strcasecmp stricmp
-#endif
-#if !HAVE_DECL_STRNCASECMP
-#define strncasecmp strnicmp
-#endif
+//#include <string.h>
+//#if !HAVE_DECL_STRCASECMP
+//#define strcasecmp stricmp
+//#endif
+//#if !HAVE_DECL_STRNCASECMP
+//#define strncasecmp strnicmp
+//#endif
 
-#else
+//#else
 
-#include <strings.h>
+//#include <strings.h>
 
-#endif
+//#endif
 
 
 //

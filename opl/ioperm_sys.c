@@ -117,7 +117,7 @@ static int LoadLibraryPointers(void)
 
     for (i = 0; i < sizeof(dll_functions) / sizeof(*dll_functions); ++i)
     {
-        *dll_functions[i].fn = GetProcAddress(dll, dll_functions[i].name);
+        *dll_functions[i].fn = (void *)GetProcAddress(dll, dll_functions[i].name);
 
         if (*dll_functions[i].fn == NULL)
         {
